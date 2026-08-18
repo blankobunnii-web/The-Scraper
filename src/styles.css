@@ -1,0 +1,60 @@
+:root {
+  color-scheme: dark;
+  --obsidian: #050706;
+  --charcoal: #111815;
+  --panel: rgba(13, 22, 18, 0.86);
+  --panel-hard: #0b100e;
+  --emerald: #00ff94;
+  --cyan: #00f0ff;
+  --muted: #7c9389;
+  --text: #e5fff4;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { background: radial-gradient(circle at 20% 0%, #10251d 0%, var(--obsidian) 36%, #010202 100%); color: var(--text); overflow: hidden; }
+button { font: inherit; }
+
+.app-frame { min-height: 100%; padding: 24px; display: grid; grid-template-rows: auto 1fr; gap: 18px; }
+.command-bar { border: 1px solid rgba(0, 255, 148, 0.25); background: linear-gradient(90deg, rgba(0, 255, 148, 0.08), rgba(6, 9, 8, 0.9)); box-shadow: 0 0 38px rgba(0, 255, 148, 0.14); display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; text-transform: uppercase; letter-spacing: 0.08em; }
+.eyebrow { color: var(--emerald); font-size: 0.75rem; margin: 0 0 6px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(1.7rem, 4vw, 3.7rem); margin-bottom: 0; line-height: 0.95; }
+.status-grid { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 8px; color: var(--emerald); font-size: 0.82rem; }
+.status-grid span, .decoder-card { border: 1px solid rgba(0, 255, 148, 0.24); background: rgba(0, 0, 0, 0.45); padding: 10px 12px; }
+
+.dashboard-grid { min-height: 0; display: grid; grid-template-columns: 240px minmax(0, 1fr) 360px; gap: 18px; }
+.filter-panel, .profile-panel { border: 1px solid rgba(0, 255, 148, 0.22); background: var(--panel); backdrop-filter: blur(12px); box-shadow: inset 0 0 28px rgba(0, 255, 148, 0.06); padding: 18px; }
+.filter-panel { display: flex; flex-direction: column; gap: 14px; }
+.filter-panel button { width: 100%; border: 1px solid rgba(0, 255, 148, 0.28); color: var(--text); background: #080d0b; padding: 13px 14px; text-align: left; text-transform: uppercase; letter-spacing: 0.09em; cursor: pointer; }
+.filter-panel button.active, .filter-panel button:hover { color: #001b10; background: var(--emerald); box-shadow: 0 0 24px rgba(0, 255, 148, 0.42); }
+.decoder-card { margin-top: auto; display: grid; gap: 7px; color: var(--muted); }
+.decoder-card strong { color: var(--emerald); }
+
+.map-shell { min-height: 0; height: 100%; border: 1px solid rgba(0, 255, 148, 0.28); background: var(--panel-hard); box-shadow: 0 0 42px rgba(0, 255, 148, 0.12); }
+.leaflet-container { background: #050706; font-family: inherit; }
+.leaflet-tooltip { background: #07100d; border: 1px solid var(--emerald); color: var(--text); box-shadow: 0 0 18px rgba(0, 255, 148, 0.35); }
+.pulse-marker { filter: drop-shadow(0 0 12px var(--emerald)); animation: pulse 1.8s infinite ease-in-out; }
+.urgency-5 { filter: drop-shadow(0 0 24px #00ff94) drop-shadow(0 0 16px #00f0ff); }
+@keyframes pulse { 0%, 100% { stroke-opacity: 0.55; } 50% { stroke-opacity: 1; } }
+
+.profile-panel { overflow: auto; border-left: 2px solid var(--emerald); }
+.profile-panel h2 { font-size: 1.65rem; letter-spacing: 0.06em; }
+.urgency-meter { height: 12px; background: #010403; border: 1px solid rgba(0, 255, 148, 0.3); margin-bottom: 10px; }
+.urgency-meter span { display: block; height: 100%; background: linear-gradient(90deg, var(--emerald), var(--cyan)); box-shadow: 0 0 20px rgba(0, 255, 148, 0.7); transition: width 240ms linear; }
+.urgency-label { display: block; color: var(--emerald); margin-bottom: 22px; }
+.profile-panel h3 { margin-top: 22px; color: var(--emerald); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; }
+ul { padding-left: 18px; color: #cce9df; }
+li { margin-bottom: 9px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { border: 1px solid rgba(0, 240, 255, 0.35); color: var(--cyan); padding: 7px 9px; background: rgba(0, 240, 255, 0.07); }
+.entry-point { color: #d8fff0; line-height: 1.6; border-left: 2px solid var(--emerald); padding-left: 12px; }
+
+@media (max-width: 980px) {
+  body { overflow: auto; }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .map-shell { min-height: 520px; }
+  .command-bar { align-items: flex-start; flex-direction: column; gap: 14px; }
+  .status-grid { width: 100%; grid-template-columns: 1fr; }
+}
